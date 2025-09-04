@@ -208,22 +208,22 @@ export default function HomePage() {
   <div className="flex flex-col gap-3">
     <a
       href="tel:+911234567890"
-      className="flex items-center gap-3 hover:text-[#EC1C24] transition"
+      className="flex items-center gap-3 hover:text-black transition"
     >
-      <Phone className="w-6 h-6 text-[#EC1C24]" /> +91 12345 67890
+      <Phone className="w-6 h-6 text-black" /> +91 12345 67890
     </a>
     <a
       href="mailto:info@blink.com"
-      className="flex items-center gap-3 hover:text-[#EC1C24] transition"
+      className="flex items-center gap-3 hover:text-black transition"
     >
-      <Mail className="w-6 h-6 text-[#EC1C24]" /> info@blink.com
+      <Mail className="w-6 h-6 text-black" /> info@blink.com
     </a>
     <a
       href="https://goo.gl/maps/your-location"
       target="_blank"
-      className="flex items-center gap-3 hover:text-[#EC1C24] transition"
+      className="flex items-center gap-3 hover:text-black transition"
     >
-      <MapPin className="w-6 h-6 text-[#EC1C24]" /> 123 Main Street, City
+      <MapPin className="w-6 h-6 text-black" /> 123 Main Street, City
     </a>
   </div>
 </div>
