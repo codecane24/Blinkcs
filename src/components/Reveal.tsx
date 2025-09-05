@@ -5,12 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type RevealProps = {
-  children: React.ReactElement<any>; // 👈 element that accepts ref
+interface RevealProps {
+  children: React.ReactNode;
   delay?: number;
   y?: number;
   duration?: number;
-};
+}
 
 export default function Reveal({
   children,
@@ -18,14 +18,14 @@ export default function Reveal({
   y = 80,
   duration = 1.4,
 }: RevealProps) {
-  const el = useRef<HTMLElement | null>(null);
+  const el = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!el.current) return;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        el.current,
+        el.current!,
         { opacity: 0, y },
         {
           opacity: 1,
@@ -45,8 +45,5 @@ export default function Reveal({
     return () => ctx.revert();
   }, [delay, y, duration]);
 
-  // ✅ attach ref safely without `any`
-  return React.cloneElement(children, {
-    ref: el,
-  } as React.ClassAttributes<HTMLElement>);
+  return <div ref={el}>{children}</div>;
 }
