@@ -5,17 +5,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+type RevealProps = {
+  children: React.ReactElement; // must be a single element
+  delay?: number;
+  y?: number;
+  duration?: number;
+};
+
 export default function Reveal({
   children,
   delay = 0,
   y = 80,
   duration = 1.4,
-}: {
-  children: React.ReactElement; // must be a single element
-  delay?: number;
-  y?: number;
-  duration?: number;
-}) {
+}: RevealProps) {
   const el = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -34,14 +36,15 @@ export default function Reveal({
           scrollTrigger: {
             trigger: el.current,
             start: "top 85%",
-            toggleActions: "restart none none reset", // 👈 replays when re-entering
+            toggleActions: "restart none none reset",
           },
         }
       );
     }, el);
 
-    return () => ctx.revert(); // cleanup
+    return () => ctx.revert();
   }, [delay, y, duration]);
 
-  return React.cloneElement(children, { ref: el });
+  // ✅ clone element + safely cast ref
+  return React.cloneElement(children, { ref: el } as any);
 }

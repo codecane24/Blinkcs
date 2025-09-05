@@ -155,7 +155,7 @@ const words = sentence.split(" ");
   className="min-h-screen text-black   flex items-center justify-center p-0 m-0"
 
 >
-   <Reveal y={50} delay={1.2}><div className="flex flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
+   <Reveal y={50} delay={1}><div className="flex flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
     {/* Left Side - Big Image */}
    
     <div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover rounded-lg" style={{ backgroundImage: `url('/AboutUs.webp')` }}></div>
@@ -188,7 +188,7 @@ const words = sentence.split(" ");
 </motion.section>
 
         {/* Gallery Section */}
-       <Reveal y={90} delay={1.2}>
+       <Reveal y={90} delay={1}>
          <div id="gallery">
   <Gallery 
         visibleImages={visibleImages}
@@ -207,14 +207,14 @@ const words = sentence.split(" ");
   className="min-h-screen text-black  flex items-center justify-center p-0 m-0"
  
 >
-   <Reveal y={50} delay={1.2}>
+   <Reveal y={50} delay={1}>
   <div className="flex flex-col md:flex-row items-start justify-center  bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-0 xl:gap-0">
     {/* Left Side - Big Image */}
     
-    <Reveal y={50} delay={1.3}><div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover bg-center  rounded-lg" style={{ backgroundImage: `url('/bg-contact.gif')` }}></div></Reveal>
+    <Reveal y={50} delay={1.2}><div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover bg-center  rounded-lg" style={{ backgroundImage: `url('/bg-contact.gif')` }}></div></Reveal>
 
     {/* Right Side - Form */}
-    <Reveal y={50} delay={1.4}>
+    <Reveal y={50} delay={1.3}>
     <div className="w-full md:w-1/2 bg-[#f4f3f3] rounded-lg p-8 lg:mr-9">
       <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
