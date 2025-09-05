@@ -132,7 +132,7 @@ const words = sentence.split(" ");
       ))}
     </div>
 
-      <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-center tracking-wide leading-relaxed">
+      <h2 className="relative text-3xl text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-center tracking-wide leading-relaxed">
       {words.map((word, i) => (
         <motion.span
           key={i}
