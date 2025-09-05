@@ -1,4 +1,5 @@
 @import "tailwindcss";   /* loads tailwind layers */
+@import "aos/dist/aos.css";
 
 :root {
   --background: #ffffff;  /* default bg */

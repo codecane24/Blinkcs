@@ -1,9 +1,10 @@
 "use client"; 
 // app/page.tsx (Next.js App Router) OR pages/index.tsx (Pages Router)
 import Sidebar from "@/components/Sidebar";
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
    import { Phone, Mail, MapPin } from "lucide-react";
 import Gallery from "@/components/Gallery";
 const imagesData = [
@@ -21,6 +22,25 @@ const imagesData = [
 export default function HomePage() {
    const [category, setCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
+  const sentence = "Beautify Your Home With Stranth";
+const words = sentence.split(" ");
+ // List of background images
+  const images = [
+    "/bg-home.jpeg",
+    "/bg-home2.jpeg",
+    "/bg-home3.jpeg",
+    "/bg-home4.jpeg",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000); // changes every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   const imagesPerPage = 8; // 4 per row × 2 rows
   const filteredImages =
@@ -62,15 +82,27 @@ export default function HomePage() {
 >
   {/* Left Side */}
   <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-6 ">
-    <motion.img
-      src="/blink-logo.webp"
-      alt="Blink"
-      className="w-32 sm:w-36 md:w-40 lg:w-52 xl:w-56 mb-4"
-      initial={{ scale: 4.2, opacity: 0 }}
-      whileInView={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 1.2 }}
-      viewport={{ once: true }}
-    />
+<div className="relative w-fit mb-4">
+  <motion.img
+    src="/blink-logo.webp"
+    alt="Blink"
+    className="w-32 sm:w-36 md:w-40 lg:w-52 xl:w-56 relative z-10"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1.2, ease: "easeOut" }}
+    viewport={{ once: true }}
+  />
+  {/* Shimmer effect */}
+  <motion.div
+    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent z-20"
+    initial={{ x: "-100%" }}
+    whileInView={{ x: "100%" }}
+    transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  />
+</div>
+
+
 
     <motion.p
       className="text-red-600 mt-2 text-sm sm:text-base"
@@ -85,20 +117,35 @@ export default function HomePage() {
 
   {/* Right Side */}
 <div className="relative w-full md:w-1/2 flex items-center justify-center h-96 sm:h-auto sm:p-6">
-{/* Background image with blur and blackish tone */}
-<div className="absolute inset-0 bg-[url('/wall-home.webp')] bg-cover bg-center filter "style={{ filter: 'blur(2px)' }}>
-  <div className="absolute inset-0 bg-black/20"></div> {/* Black overlay with 20% opacity */}
-</div>
+  <div className="absolute inset-0">
+      {images.map((img, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ backgroundImage: `url(${img})` }}
+        >
+          {/* Black overlay */}
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
+      ))}
+    </div>
 
-    <motion.h2
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 3, ease: "easeOut" }}
-      viewport={{ once: true }}
-      className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-center tracking-wide leading-relaxed"
-    >
-      Beautify <br /> Your Home <br /> With Stranth
-    </motion.h2>
+      <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-center tracking-wide leading-relaxed">
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: i * 0.9 }}
+          viewport={{ once: true }}
+          className="inline-block mr-2"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </h2>
   </div>
 </motion.section>
 
@@ -106,13 +153,11 @@ export default function HomePage() {
 <motion.section
     id="about"
   className="min-h-screen text-black   flex items-center justify-center p-0 m-0"
-  initial={{ opacity: 0, x: -100 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.9, ease: "easeOut" }}
-  viewport={{ once: true }}
+
 >
-  <div className="flex flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
+   <Reveal y={50} delay={1.2}><div className="flex flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
     {/* Left Side - Big Image */}
+   
     <div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover rounded-lg" style={{ backgroundImage: `url('/AboutUs.webp')` }}></div>
 
     {/* Right Side - Form */}
@@ -138,11 +183,13 @@ export default function HomePage() {
 
     
     </div>
-  </div>
+    
+  </div></Reveal>
 </motion.section>
 
         {/* Gallery Section */}
-        <div id="gallery">
+       <Reveal y={90} delay={1.2}>
+         <div id="gallery">
   <Gallery 
         visibleImages={visibleImages}
         category={category}
@@ -152,23 +199,23 @@ export default function HomePage() {
         handleNext={handleNext}
         currentPage={currentPage}
         totalPages={totalPages}
-      /></div>
+      /></div></Reveal> 
 
         {/* Contact Section */}
 <motion.section
   id="contact"
   className="min-h-screen text-black  flex items-center justify-center p-0 m-0"
-  initial={{ opacity: 0, x: -100 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.9, ease: "easeOut" }}
-  viewport={{ once: true }}
+ 
 >
-  <div className="flex flex-col md:flex-row items-center justify-center w-full sm:px-5 md:px-0 gap-10">
+   <Reveal y={50} delay={1.2}>
+  <div className="flex flex-col md:flex-row items-start justify-center  bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-0 xl:gap-0">
     {/* Left Side - Big Image */}
-    <div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover bg-center rounded-lg" style={{ backgroundImage: `url('/contact.webp')` }}></div>
+    
+    <Reveal y={50} delay={1.3}><div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover bg-center  rounded-lg" style={{ backgroundImage: `url('/bg-contact.gif')` }}></div></Reveal>
 
     {/* Right Side - Form */}
-    <div className="w-full md:w-1/2 bg-[#E6E6E6] rounded-lg p-8 lg:mx-9">
+    <Reveal y={50} delay={1.4}>
+    <div className="w-full md:w-1/2 bg-[#f4f3f3] rounded-lg p-8 lg:mr-9">
       <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
       {/* Form */}
@@ -228,8 +275,9 @@ export default function HomePage() {
   </div>
 </div>
 
-    </div>
-  </div>
+    </div></Reveal>
+
+  </div></Reveal>
 </motion.section>
 
       </div>
