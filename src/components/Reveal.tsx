@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 type RevealProps = {
-  children: React.ReactElement; // must be a single element
+  children: React.ReactElement<any>; // 👈 element that accepts ref
   delay?: number;
   y?: number;
   duration?: number;
@@ -45,6 +45,8 @@ export default function Reveal({
     return () => ctx.revert();
   }, [delay, y, duration]);
 
-  // ✅ clone element + safely cast ref
-  return React.cloneElement(children, { ref: el } as any);
+  // ✅ attach ref safely without `any`
+  return React.cloneElement(children, {
+    ref: el,
+  } as React.ClassAttributes<HTMLElement>);
 }
