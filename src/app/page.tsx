@@ -34,11 +34,11 @@ const words = sentence.split(" ");
  // List of background images
   const images = [
         "/bg-home-main.webp",
-            "/bg-home3.jpeg",
-    "/bg-home.jpeg",
-     "/bg-home-main.webp",
-    "/bg-home3.jpeg",
-     "/bg-home-main.webp",
+            "/bg-home5.webp",
+    "/bg-home4.jpeg",
+     "/bg-home3.jpeg",
+    "/bg-home2.jpeg",
+"/bg-home.jpeg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -99,7 +99,7 @@ const fadeInUpVariant = {
   viewport={{ once: true }}
 >
   {/* Left Side */}
-  <div className="w-full h-[50vh] sm:h-auto md:w-1/2 flex flex-col items-center justify-center p-6 ">
+  <div className="w-full h-[100vh] sm:h-auto md:w-1/2 flex flex-col items-center justify-center p-6 ">
 <div className="relative w-fit mb-4">
   <motion.img
     src="/blink-logo.webp"
@@ -143,7 +143,7 @@ with Strength
   </div>
 
   {/* Right Side */}
-<div className="relative w-full md:w-1/2 flex items-center justify-center h-[50vh] sm:h-auto sm:p-6">
+<div className="relative w-full md:w-1/2 flex items-center justify-center h-[80vh] sm:h-auto sm:p-6">
   <div className="absolute inset-0">
       {images.map((img, index) => (
         <div
@@ -320,7 +320,10 @@ with Strength
 </motion.section>
 </Reveal>
 
+ <div className="bg-black w-full h-12 pt-2 "><p className="text-white font-light text-center text-sm ">Copyright © 2025 Blink Concrete Solutions</p></div>
+
       </div>
+     
     </div>
   );
 }
