@@ -293,23 +293,24 @@ with Strength
   <h3 className="text-2xl font-semibold mb-4">How to reach us</h3>
   <div className="flex flex-col gap-3">
     <a
-      href="tel:+911234567890"
+      href="tel:+916353156181"
       className="flex items-center gap-3 hover:text-black transition"
     >
-      <Phone className="w-6 h-6 text-black" /> +91 12345 67890
+      <Phone className="w-6 h-6 text-black" /> +916353156181
     </a>
     <a
-      href="mailto:info@blink.com"
+      href="mailto:nilesh@blinkcs.com"
       className="flex items-center gap-3 hover:text-black transition"
     >
-      <Mail className="w-6 h-6 text-black" /> info@blink.com
+      <Mail className="w-6 h-6 text-black" /> nilesh@blinkcs.com
     </a>
     <a
       href="https://goo.gl/maps/your-location"
       target="_blank"
       className="flex items-center gap-3 hover:text-black transition"
     >
-      <MapPin className="w-6 h-6 text-black" /> 123 Main Street, City
+      <MapPin className="w-6 h-6 text-black" /> 74/2, Palodia Tekra, Nr. Aarya Farm,
+Shilaj Road, Ahmedabad – 380059
     </a>
   </div>
 </div>
