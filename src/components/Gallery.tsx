@@ -84,13 +84,13 @@ export default function Gallery({
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="relative w-full h-48 bg-white rounded overflow-hidden flex items-center justify-center"
+            className="relative w-full h-48  rounded overflow-hidden flex items-center justify-center "
           >
             <Image
               src={img.src}
               alt={img.category}
               fill
-              className="object-contain p-2"
+              className="object-contain p-2 shadowss2 hover:scale-105 transition-opacity"
               priority={img.id <= 4}
             />
           </motion.div>

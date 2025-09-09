@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Courgette&family=Khand:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 @import "tailwindcss";   /* loads tailwind layers */
 @import "aos/dist/aos.css";
+
+
 
 :root {
   --background: #ffffff;  /* default bg */
@@ -21,5 +24,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+ font-family: 'Montserrat', sans-serif;
+}
+.shadowss{
+ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.shadowss2{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }

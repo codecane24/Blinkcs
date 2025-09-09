@@ -30,30 +30,30 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <div
-        className={`fixed left-0 top-0 h-screen bg-gray-100 flex flex-col items-center justify-between py-6 z-40 
+        className={`fixed left-0 top-0 h-screen bg-[#E6E6E6] flex flex-col items-center justify-between py-6 z-40 
         transform transition-transform duration-300 
         ${open ? "translate-x-0 w-56" : "-translate-x-full w-56"} 
         lg:translate-x-0 lg:w-16`}
       >
         {/* Logo */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center  ">
           <Image
             src="/blink-logo-2.webp"
             alt="Logo"
             width={30}
             height={30}
-            className="mb-10"
+            className="mb-6 xl:mb-10"
           />
 
           {/* Navigation */}
           <nav className="flex flex-col items-center font-semibold">
       {/* Desktop links (rotated with proper spacing) */}
-<div className="hidden lg:flex flex-col items-center gap-12 xl:gap-20 text-[.8rem]  xl:text-[1rem] tracking-wide">
+<div className="hidden lg:flex flex-col items-center gap-16  xl:gap-20 text-[.7rem]  xl:text-[1rem] tracking-wide">
   {[
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "HOME", href: "#home" },
+    { name: "ABUOT US", href: "#about" },
+    { name: "GALLERY", href: "#gallery" },
+    { name: "CONTACT US", href: "#contact" },
   ].map((link) => (
     <Link
       key={link.name}
@@ -104,7 +104,7 @@ export default function Sidebar() {
         </div>
 
         {/* Social Icons */}
-        <div className="flex flex-col items-center space-y-3 mt-auto mb-4">
+        <div className="flex flex-col items-center space-y-3 mt-auto mb-0">
           <a
             href="https://instagram.com"
             target="_blank"

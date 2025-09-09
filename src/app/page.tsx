@@ -2,7 +2,12 @@
 // app/page.tsx (Next.js App Router) OR pages/index.tsx (Pages Router)
 import Sidebar from "@/components/Sidebar";
 import Reveal from "@/components/Reveal";
-
+import { Courier_Prime, Courgette, Khand, Montserrat } from 'next/font/google';
+// Declare at top of file (module scope)
+const courierPrime = Courier_Prime({ subsets: ['latin'], weight: '400' });
+const courgette = Courgette({ subsets: ['latin'], weight: '400' });
+const khand = Khand({ subsets: ['latin'], weight: ['400', '700'] });
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '700'] });
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
    import { Phone, Mail, MapPin } from "lucide-react";
@@ -23,13 +28,17 @@ export default function HomePage() {
    const [category, setCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
   const sentence = "Beautify Your Home With Stranth";
+
+
 const words = sentence.split(" ");
  // List of background images
   const images = [
+        "/bg-home-main.webp",
+            "/bg-home3.jpeg",
     "/bg-home.jpeg",
-    "/bg-home2.jpeg",
+     "/bg-home-main.webp",
     "/bg-home3.jpeg",
-    "/bg-home4.jpeg",
+     "/bg-home-main.webp",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,6 +72,15 @@ const words = sentence.split(" ");
   const handlePrev = () => {
     if (currentPage > 0) setCurrentPage(currentPage - 1);
   };
+// Animation variant
+const fadeInUpVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
 
   return (
     <div className="flex">
@@ -70,7 +88,7 @@ const words = sentence.split(" ");
       <Sidebar />
 
       {/* Main Content */}
-      <div className=" md:ml-16 flex-1">
+      <div className=" md:ml-16 flex-1 bg-[#F5F5F5]">
     {/* First Section */}
 <motion.section
   id="home"
@@ -81,12 +99,12 @@ const words = sentence.split(" ");
   viewport={{ once: true }}
 >
   {/* Left Side */}
-  <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-6 ">
+  <div className="w-full h-[50vh] sm:h-auto md:w-1/2 flex flex-col items-center justify-center p-6 ">
 <div className="relative w-fit mb-4">
   <motion.img
     src="/blink-logo.webp"
     alt="Blink"
-    className="w-32 sm:w-36 md:w-40 lg:w-52 xl:w-56 relative z-10"
+    className="w-52 sm:w-36 md:w-40 lg:w-52 xl:w-56 relative z-10"
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 1.2, ease: "easeOut" }}
@@ -102,21 +120,30 @@ const words = sentence.split(" ");
   />
 </div>
 
-
-
     <motion.p
-      className="text-red-600 mt-2 text-sm sm:text-base"
+      className={`text-[#404041] mb-10 text-center mt-10 text-lg sm:text-xl lg:text-2xl xl:3xl ${courgette.className}`}
       initial={{ opacity: 0, y: -10 }}
       whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1.5, delay: 0.8 }}
+      transition={{ duration: 1.8, delay: 0.8 }}
+      viewport={{ once: true }}
+    >
+    Beautify Your Home<br></br>
+with Strength
+    </motion.p>
+   <motion.p
+      className={`text-red-600 mt-2 text-sm sm:text-base ${courierPrime.className}`}
+      initial={{ opacity: 0, y: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1.8, delay: 0.9 }}
       viewport={{ once: true }}
     >
       since 2022
     </motion.p>
+
   </div>
 
   {/* Right Side */}
-<div className="relative w-full md:w-1/2 flex items-center justify-center h-96 sm:h-auto sm:p-6">
+<div className="relative w-full md:w-1/2 flex items-center justify-center h-[50vh] sm:h-auto sm:p-6">
   <div className="absolute inset-0">
       {images.map((img, index) => (
         <div
@@ -132,7 +159,7 @@ const words = sentence.split(" ");
       ))}
     </div>
 
-      <h2 className="relative text-3xl text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-center tracking-wide leading-relaxed">
+      {/* <h2 className="relative text-3xl text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-center tracking-wide leading-relaxed">
       {words.map((word, i) => (
         <motion.span
           key={i}
@@ -145,51 +172,54 @@ const words = sentence.split(" ");
           {word}
         </motion.span>
       ))}
-    </h2>
+    </h2> */}
   </div>
 </motion.section>
 
         {/* About Us Section */}
 <motion.section
-    id="about"
-  className="min-h-screen text-black   flex items-center justify-center p-0 m-0"
-
+  id="about"
+  className="min-h-screen  flex sm:items-center sm:justify-center p-0 m-0 relative "
 >
-   <Reveal y={50} delay={1}><div className="flex flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
-    {/* Left Side - Big Image */}
-   
-    <div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover rounded-lg" style={{ backgroundImage: `url('/AboutUs.webp')` }}></div>
+  <Reveal y={50} delay={0.4}>
+    <div className="relative flex bg-[#2C2C2C] sm:bg-transparent flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
 
-    {/* Right Side - Form */}
-    <div className="w-full md:w-1/2 bg-[#E6E6E6] rounded-lg p-8 lg:mx-9">
-      <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">About Us</h1>
-    <p className="text-sm xl:text-xl md:text-base leading-relaxed text-black">
-          At Blink, we believe every home should be a perfect balance of beauty
-          and strength. Since our inception in 2022, we have been dedicated to
-          crafting premium concrete bricks that combine durability with design
-          excellence.
-        </p>
-        <p className="text-sm xl:text-xl md:text-base leading-relaxed text-black mt-4">
-          Guided by our tagline – <span className="italic">“Beautify your home with Strength”</span> – 
-          we ensure that every product not only supports strong foundations but also 
-          enhances the aesthetic appeal of every structure. Our advanced manufacturing 
-          process, strict quality checks, and eco-conscious approach make us a trusted 
-          choice for builders, architects, and homeowners alike.
-        </p>
-        <p className="text-sm xl:text-xl md:text-base leading-relaxed text-black mt-4">
-          At Blink, we don’t just make bricks – we create building blocks for homes, 
-          dreams, and lasting legacies.
-        </p>
+      {/* Left Side - Big Image */}
+      <div className="hidden sm:flex w-full md:w-[40%]  h-[20vh] md:h-[100vh] bg-cover rounded-lg lg:my-4 md:mx-9 z-10" 
+           style={{ backgroundImage: `url('/AboutUs2.webp')` }}></div>
 
-    
+      {/* Right Side */}
+      <div className="w-full md:w-[50%] mt-8 bg-[#2C2C2C] sm:rounded-lg p-8 lg:mx-9 lg:my-5 shadowss md:mx-9 z-10 xl: sm:min-h-[90vh]">
+        <h1 className="text-5xl xl:text-6xl text-[#F5F5F5] font-semibold mb-3">About Us</h1>
+        <div className="bg-[#EC1C24] h-[2px] w-full mb-3"></div>
+        <p className="text-sm xl:text-xl md:text-lg font-extralight text-[#F5F5F5]">
+          At Blink, we believe every home should be a perfect balance of beauty and strength. Since our inception in 2022, we have been dedicated to crafting premium concrete bricks that combine durability with design excellence.
+        </p>
+        <p className="text-sm xl:text-xl md:text-base leading-relaxed text-[#F5F5F5] mt-4">
+          Guided by our tagline – <span className="italic">“Beautify your home with Strength”</span> – we ensure that every product not only supports strong foundations but also enhances the aesthetic appeal of every structure. Our advanced manufacturing process, strict quality checks, and eco-conscious approach make us a trusted choice for builders, architects, and homeowners alike.
+        </p>
+        <p className="text-sm xl:text-xl md:text-base leading-relaxed text-[#F5F5F5] mt-4">
+          At Blink, we don’t just make bricks – we create building blocks for homes, dreams, and lasting legacies.
+        </p>
+      </div>
+      
+   <div className="sm:hidden flex w-full md:w-[40%]  h-[60vh] md:h-[100vh] bg-cover rounded-lg lg:my-4 md:mx-9 z-10" 
+           style={{ backgroundImage: `url('/AboutUs2.webp')` }}>      {/* Bottom Background Div */}
+   </div>
+      {/* Bottom Background Div */}
+      {/* for small screen  */}
+         <div className="absolute  sm:hidden left-0 bottom-[0%] h-40 w-full   z-0 bg-cover "style={{ backgroundImage: `url('/bgof-about-us.webp')` }}></div>
+         {/* for big screen */}
+      <div className="hidden sm:flex absolute left-0 bottom-[14%] xl:bottom-[2%] h-40 w-full   z-0 bg-cover "style={{ backgroundImage: `url('/bgof-about-us.webp')` }}></div>
+
     </div>
-    
-  </div></Reveal>
+  </Reveal>
 </motion.section>
 
+
         {/* Gallery Section */}
-       <Reveal y={90} delay={1}>
-         <div id="gallery">
+       <Reveal y={90} delay={0.3}>
+         <div id="gallery" className="">
   <Gallery 
         visibleImages={visibleImages}
         category={category}
@@ -199,24 +229,32 @@ const words = sentence.split(" ");
         handleNext={handleNext}
         currentPage={currentPage}
         totalPages={totalPages}
-      /></div></Reveal> 
+        
+      /></div>
+      </Reveal> 
 
         {/* Contact Section */}
-         <Reveal y={50} delay={1}>
+         <Reveal y={50} delay={0.4}>
 <motion.section
   id="contact"
   className="min-h-screen text-black  flex items-center justify-center p-0 m-0"
  
 >
   
-  <div className="flex flex-col md:flex-row items-start justify-center  bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-0 xl:gap-0">
+  <div className="flex flex-col md:flex-row items-start justify-center  bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-10 xl:gap-0">
     {/* Left Side - Big Image */}
     
-   <div className="w-full md:w-1/2 h-96 md:h-[600px] bg-cover bg-center  rounded-lg" style={{ backgroundImage: `url('/bg-contact.gif')` }}></div>
+<div className="w-full md:w-1/2 rounded-lg overflow-hidden ">
+  <div
+    className="w-full h-auto bg-contain bg-center bg-no-repeat min-h-[500px] md:min-h-[700px]"
+    style={{ backgroundImage: `url('/contact2.webp')` }}
+  ></div>
+</div>
+
 
     {/* Right Side - Form */}
 
-    <div className="w-full md:w-1/2 bg-[#f4f3f3] rounded-lg p-8 lg:mr-9">
+    <div className="w-full md:w-1/2 bg-white rounded-lg p-8 lg:mr-9 shadowss my-5">
       <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
       {/* Form */}
@@ -224,21 +262,21 @@ const words = sentence.split(" ");
         <input
           type="text"
           placeholder="Name"
-          className="p-3 rounded  border-black border focus:outline-none "
+          className="p-3 rounded   border focus:outline-none "
         />
         <input
           type="text"
           placeholder="Company"
-          className="p-3 rounded  border-black border focus:outline-none "
+          className="p-3 rounded   border focus:outline-none "
         />
         <input
           type="email"
           placeholder="Email"
-          className="p-3 rounded  border-black border focus:outline-none "
+          className="p-3 rounded   border focus:outline-none "
         />
         <textarea
           placeholder="Message"
-          className="p-3 rounded  border-black border focus:outline-none  h-32"
+          className="p-3 rounded   border focus:outline-none  h-32"
         ></textarea>
         <button
           type="submit"
@@ -279,7 +317,8 @@ const words = sentence.split(" ");
     </div>
 
   </div>
-</motion.section></Reveal>
+</motion.section>
+</Reveal>
 
       </div>
     </div>
