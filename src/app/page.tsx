@@ -92,7 +92,7 @@ const fadeInUpVariant = {
     {/* First Section */}
 <motion.section
   id="home"
-  className="sm:h-screen flex flex-col md:flex-row "  // stack on small, row on medium+
+  className="sm:h-screen flex flex-col md:flex-row sm:mb-16 lg:mb-20"  // stack on small, row on medium+
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8, ease: "easeOut" }}
@@ -179,7 +179,7 @@ with Strength
         {/* About Us Section */}
 <motion.section
   id="about"
-  className="min-h-screen  flex sm:items-center sm:justify-center p-0 m-0 relative "
+  className="min-h-screen  flex sm:items-center sm:justify-center p-0 m-0 relative sm:mb-16 lg:mb-20 "
 >
   <Reveal y={50} delay={0.4}>
     <div className="relative flex bg-[#2C2C2C] sm:bg-transparent flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
@@ -219,7 +219,7 @@ with Strength
 
         {/* Gallery Section */}
        <Reveal y={90} delay={0.3}>
-         <div id="gallery" className="">
+         <div id="gallery" className="mb-11 sm:mb-16 lg:mb-20">
   <Gallery 
         visibleImages={visibleImages}
         category={category}
@@ -237,14 +237,14 @@ with Strength
          <Reveal y={50} delay={0.4}>
 <motion.section
   id="contact"
-  className="min-h-screen text-black  flex items-center justify-center p-0 m-0"
+  className="min-h-screen text-black  flex items-center justify-center p-0 mb-5 sm:mb-16 lg:mb-20"
  
 >
   
   <div className="flex flex-col md:flex-row items-start justify-center  bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-10 xl:gap-0">
     {/* Left Side - Big Image */}
     
-<div className="w-full md:w-1/2 rounded-lg overflow-hidden ">
+<div className="w-full md:w-1/2 sm:rounded-lg overflow-hidden ">
   <div
     className="w-full h-auto bg-contain bg-center bg-no-repeat min-h-[500px] md:min-h-[700px]"
     style={{ backgroundImage: `url('/contact2.webp')` }}
@@ -254,7 +254,7 @@ with Strength
 
     {/* Right Side - Form */}
 
-    <div className="w-full md:w-1/2 bg-white rounded-lg p-8 lg:mr-9 shadowss my-5">
+    <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 lg:mr-9 shadowss my-5">
       <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
       {/* Form */}
