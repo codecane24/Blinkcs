@@ -14,13 +14,12 @@ useEffect(() => {
     const sections = ["home", "about", "gallery", "contact"];
     let found = false;
 
-    for (let section of sections) {
+    for (const section of sections) {
       const element = document.getElementById(section);
       if (element) {
         const rect = element.getBoundingClientRect();
         const offset = window.innerHeight / 2;
 
-        // If section is near middle of the viewport
         if (rect.top <= offset && rect.bottom >= offset) {
           setActiveSection(`#${section}`);
           found = true;
@@ -29,12 +28,11 @@ useEffect(() => {
       }
     }
 
-    // Fallback: if no section matches (e.g., at top), reset to home
     if (!found) setActiveSection("#home");
   };
 
   window.addEventListener("scroll", handleScroll);
-  handleScroll(); // initial check
+  handleScroll();
 
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
