@@ -248,10 +248,10 @@ with Strength
     id="contact"
     className="min-h-screen text-black flex items-center justify-center p-0 mb-5 sm:mb-12 lg:mb-20 "
   >
-    <div className="flex flex-col md:flex-row items-start justify-center bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-10 xl:gap-0">
+    <div className="flex flex-col md:flex-row items-start justify-center bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-4 lg:gap-10 xl:gap-0">
 
       {/* Left Side - Google Map */}
-      <div className="w-[80%] lg:w-1/2 mx-auto rounded-2xl overflow-hidden lg:mt-5 lg:ml-9">
+      <div className="w-[80%] sm:w-1/2 mx-auto rounded-2xl overflow-hidden md:mt-5 md:ml-5 lg:mt-5 lg:ml-9">
         <iframe
           
          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117470.76714368863!2d72.385109!3d23.061874000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9f6d1bb128c5%3A0xaf09f75451dfac6f!2sGodhavi%2C%20Gujarat%20382115!5e0!3m2!1sen!2sin!4v1757494236106!5m2!1sen!2sin"
@@ -268,7 +268,7 @@ with Strength
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 lg:mr-9 sm:shadowss my-5">
+      <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 md:mr-2 lg:mr-9 sm:shadowss my-5">
         <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
         {/* Form */}
