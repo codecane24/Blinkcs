@@ -243,97 +243,99 @@ with Strength
       </Reveal> 
 
         {/* Contact Section */}
-         <Reveal y={50} delay={0.4}>
-<motion.section
-  id="contact"
-  className="min-h-screen text-black  flex items-center justify-center p-0 mb-5 sm:mb-12 lg:mb-20"
- 
->
-  
-  <div className="flex flex-col md:flex-row items-start justify-center  bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-10 xl:gap-0">
-    {/* Left Side - Big Image */}
-    
-<div className="w-full md:w-1/2 sm:rounded-lg overflow-hidden ">
-  <div
-    className="w-full h-auto bg-contain bg-center bg-no-repeat min-h-[500px] md:min-h-[700px]"
-    style={{ backgroundImage: `url('/contact2.webp')` }}
-  ></div>
-</div>
+ <Reveal y={50} delay={0.4}>
+  <motion.section
+    id="contact"
+    className="min-h-screen text-black flex items-center justify-center p-0 mb-5 sm:mb-12 lg:mb-20 "
+  >
+    <div className="flex flex-col md:flex-row items-start justify-center bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-10 xl:gap-0">
 
+      {/* Left Side - Google Map */}
+      <div className="w-[80%] lg:w-1/2 mx-auto rounded-2xl overflow-hidden lg:mt-5 lg:ml-9">
+        <iframe
+          
+         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117470.76714368863!2d72.385109!3d23.061874000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9f6d1bb128c5%3A0xaf09f75451dfac6f!2sGodhavi%2C%20Gujarat%20382115!5e0!3m2!1sen!2sin!4v1757494236106!5m2!1sen!2sin"
+         
+          width="100%"
+          height="100%"
+          className="min-h-[500px] md:min-h-[700px] border-0"
+           referrerpolicy="no-referrer-when-downgrade"
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
 
-    {/* Right Side - Form */}
+      {/* Right Side - Form */}
+      <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 lg:mr-9 sm:shadowss my-5">
+        <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
-    <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 lg:mr-9 sm:shadowss my-5">
-      <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
+        {/* Form */}
+        <form className="flex flex-col gap-4 bg-white px-5 py-4 rounded-xl">
+          <input
+            type="text"
+            placeholder="Name"
+            className="p-3 rounded border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none"
+          />
+          <input
+            type="text"
+            placeholder="Company"
+            className="p-3 rounded border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none"
+          />
+          <input
+            type="mobile"
+            placeholder="Mobile Number"
+            className="p-3 rounded border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="p-3 rounded border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none"
+          />
+          <textarea
+            placeholder="Message"
+            className="p-3 rounded border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none h-32"
+          ></textarea>
+          <button
+            type="submit"
+            className="bg-black text-white py-2 rounded-lg hover:scale-95 transition"
+          >
+            Submit
+          </button>
+        </form>
 
-      {/* Form */}
-      <form className="flex flex-col gap-4 bg-white px-5 py-4 rounded-xl">
-        <input
-          type="text"
-          placeholder="Name"
-          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9]  focus:outline-none "
-        />
-        <input
-          type="text"
-          placeholder="Company"
-          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none "
-        />
-            <input
-          type="mobile"
-          placeholder="Mobile Number"
-          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none "
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none "
-        />
-        <textarea
-          placeholder="Message"
-          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none  h-32"
-        ></textarea>
-        <button
-          type="submit"
-          className="bg-black text-white py-2 rounded-lg hover:scale-95 transition"
-        >
-          Submit
-        </button>
-      </form>
-
-
-
-{/* Contact Info */}
-<div className="mt-10">
-  <h3 className="text-2xl font-semibold mb-4">How to reach us</h3>
-  <div className="flex flex-col gap-3">
-    <a
-      href="tel:+916353156181"
-      className="flex items-center gap-3 hover:text-black transition"
-    >
-      <Phone className="w-6 h-6 text-black" /> +916353156181
-    </a>
-    <a
-      href="mailto:nilesh@blinkcs.com"
-      className="flex items-center gap-3 hover:text-black transition"
-    >
-      <Mail className="w-6 h-6 text-black" /> nilesh@blinkcs.com
-    </a>
-    <a
-      href="https://goo.gl/maps/your-location"
-      target="_blank"
-      className="flex items-start sm:items-center  gap-3 hover:text-black transition"
-    >
-      <MapPin className="w-8 h-8 text-black" /> 74/2, Palodia Tekra, Nr. Aarya Farm,
-Shilaj Road, Ahmedabad – 380059
-    </a>
-  </div>
-</div>
+        {/* Contact Info */}
+        <div className="mt-10">
+          <h3 className="text-2xl font-semibold mb-4">How to reach us</h3>
+          <div className="flex flex-col gap-3">
+            <a
+              href="tel:+916353156181"
+              className="flex items-center gap-3 hover:text-black transition"
+            >
+              <Phone className="w-6 h-6 text-black" /> +916353156181
+            </a>
+            <a
+              href="mailto:nilesh@blinkcs.com"
+              className="flex items-center gap-3 hover:text-black transition"
+            >
+              <Mail className="w-6 h-6 text-black" /> nilesh@blinkcs.com
+            </a>
+            <a
+              href="https://maps.app.goo.gl/CZGnZEure8qTvSTQA"
+              target="_blank"
+              className="flex items-start sm:items-center gap-3 hover:text-black transition"
+            >
+              <MapPin className="w-8 h-8 text-black" /> 74/2, Palodia Tekra, Nr. Aarya Farm,
+              Shilaj Road, Ahmedabad – 380059
+            </a>
+          </div>
+        </div>
+      </div>
 
     </div>
-
-  </div>
-</motion.section>
+  </motion.section>
 </Reveal>
+
 
  <div className="bg-black w-full h-12 pt-2 "><p className="text-white font-light text-center text-sm ">Copyright © 2025 Blink Concrete Solutions</p></div>
 
