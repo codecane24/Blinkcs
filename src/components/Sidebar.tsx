@@ -49,7 +49,7 @@ useEffect(() => {
     <>
       {!open && (
         <button
-          className="lg:hidden fixed top-4 left-2 z-50 p-2 text-black rounded-md"
+          className="lg:hidden fixed top-4 left-2 z-50 p-2 text-black rounded-md "
           onClick={() => setOpen(true)}
         >
           <Menu size={34} />
@@ -58,7 +58,7 @@ useEffect(() => {
 
       {open && (
         <div
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 lg:hidden"
+          className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-30 lg:hidden"
           onClick={() => setOpen(false)}
         />
       )}
