@@ -259,10 +259,11 @@ with Strength
           width="100%"
           height="100%"
           className="min-h-[500px] md:min-h-[700px] border-0"
-           referrerpolicy="no-referrer-when-downgrade"
-          allowFullScreen=""
+           referrerPolicy="no-referrer-when-downgrade"
+         allowFullScreen={true}
+
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          
         ></iframe>
       </div>
 
