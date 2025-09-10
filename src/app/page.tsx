@@ -83,16 +83,16 @@ const fadeInUpVariant = {
 };
 
   return (
-    <div className="flex">
+    <div className="flex overflow-x-hidden">
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <div className=" md:ml-16 flex-1 bg-[#F5F5F5]">
+      <div className=" lg:ml-16 flex-1 bg-[#F5F5F5]">
     {/* First Section */}
 <motion.section
   id="home"
-  className="sm:h-screen flex flex-col md:flex-row sm:mb-16 lg:mb-20"  // stack on small, row on medium+
+  className="sm:h-screen flex flex-col md:flex-row sm:mb-12 lg:mb-20"  // stack on small, row on medium+
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8, ease: "easeOut" }}
@@ -179,17 +179,19 @@ with Strength
         {/* About Us Section */}
 <motion.section
   id="about"
-  className="min-h-screen  flex sm:items-center sm:justify-center p-0 m-0 relative sm:mb-16 lg:mb-20 "
+  className="min-h-screen flex sm:items-center sm:justify-center p-0 m-0 relative sm:mb-12 lg:mb-20"
 >
   <Reveal y={50} delay={0.4}>
     <div className="relative flex bg-[#2C2C2C] sm:bg-transparent flex-col md:flex-row items-center md:justify-center w-full sm:px-5 md:px-0 gap-10">
 
-      {/* Left Side - Big Image */}
-      <div className="hidden sm:flex w-full md:w-[40%]  h-[20vh] md:h-[100vh] bg-cover rounded-lg lg:my-4 md:mx-9 z-10" 
-           style={{ backgroundImage: `url('/AboutUs2.webp')` }}></div>
+      {/* Left Side - Big Image (fixed for medium screens) */}
+      <div 
+        className="hidden sm:flex w-full md:w-[50%] h-[20vh] md:min-h-[40vh] lg:h-[100vh] bg-cover rounded-lg lg:my-4 md:mx-2 lg:mx-9 z-10"
+        style={{ backgroundImage: `url('/AboutUs2.webp')` }}
+      ></div>
 
-      {/* Right Side */}
-      <div className="w-full md:w-[50%] mt-8 bg-[#2C2C2C] sm:rounded-lg p-8 lg:mx-9 lg:my-5 shadowss md:mx-9 z-10 xl: sm:min-h-[90vh]">
+      {/* Right Side - Text */}
+      <div className="w-full md:w-[50%] mt-8 bg-[#2C2C2C] sm:rounded-lg p-8 lg:mx-9 lg:my-5 shadowss md:mx-0 z-10 md:min-h-[70vh] lg:min-h-[90vh]">
         <h1 className="text-5xl xl:text-6xl text-[#F5F5F5] font-semibold mb-3">About Us</h1>
         <div className="bg-[#EC1C24] h-[2px] w-full mb-3"></div>
         <p className="text-sm xl:text-xl md:text-lg font-extralight text-[#F5F5F5]">
@@ -202,16 +204,23 @@ with Strength
           At Blink, we don’t just make bricks – we create building blocks for homes, dreams, and lasting legacies.
         </p>
       </div>
-      
-   <div className="sm:hidden flex w-full md:w-[40%]  h-[60vh] md:h-[100vh] bg-cover rounded-lg lg:my-4 md:mx-9 z-10" 
-           style={{ backgroundImage: `url('/AboutUs2.webp')` }}>      {/* Bottom Background Div */}
-   </div>
-      {/* Bottom Background Div */}
-      {/* for small screen  */}
-         <div className="absolute  sm:hidden left-0 bottom-[0%] h-40 w-full   z-0 bg-cover "style={{ backgroundImage: `url('/bgof-about-us.webp')` }}></div>
-         {/* for big screen */}
-      <div className="hidden sm:flex absolute left-0 bottom-[14%] xl:bottom-[2%] h-40 w-full   z-0 bg-cover "style={{ backgroundImage: `url('/bgof-about-us.webp')` }}></div>
 
+      {/* Bottom Div for small screens (unchanged) */}
+      <div 
+        className="sm:hidden flex w-full md:w-[40%] h-[60vh] md:h-[100vh] bg-cover rounded-lg lg:my-4 md:mx-9 z-10"
+        style={{ backgroundImage: `url('/AboutUs2.webp')` }}
+      ></div>
+
+      {/* Decorative Background Div */}
+      <div 
+        className="absolute sm:hidden left-0 bottom-[0%] h-40 w-full z-0 bg-cover"
+        style={{ backgroundImage: `url('/bgof-about-us.webp')` }}
+      ></div>
+
+      <div 
+        className="hidden sm:flex absolute left-0 bottom-[14%] xl:bottom-[2%] h-40 w-full z-0 bg-cover"
+        style={{ backgroundImage: `url('/bgof-about-us.webp')` }}
+      ></div>
     </div>
   </Reveal>
 </motion.section>
@@ -219,7 +228,7 @@ with Strength
 
         {/* Gallery Section */}
        <Reveal y={90} delay={0.3}>
-         <div id="gallery" className="mb-11 sm:mb-16 lg:mb-20">
+         <div id="gallery" className="mb-11 sm:mb-12 lg:mb-20">
   <Gallery 
         visibleImages={visibleImages}
         category={category}
@@ -237,7 +246,7 @@ with Strength
          <Reveal y={50} delay={0.4}>
 <motion.section
   id="contact"
-  className="min-h-screen text-black  flex items-center justify-center p-0 mb-5 sm:mb-16 lg:mb-20"
+  className="min-h-screen text-black  flex items-center justify-center p-0 mb-5 sm:mb-12 lg:mb-20"
  
 >
   
@@ -254,7 +263,7 @@ with Strength
 
     {/* Right Side - Form */}
 
-    <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 lg:mr-9 shadowss my-5">
+    <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 lg:mr-9 sm:shadowss my-5">
       <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
 
       {/* Form */}
@@ -262,25 +271,30 @@ with Strength
         <input
           type="text"
           placeholder="Name"
-          className="p-3 rounded   border focus:outline-none "
+          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9]  focus:outline-none "
         />
         <input
           type="text"
           placeholder="Company"
-          className="p-3 rounded   border focus:outline-none "
+          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none "
+        />
+            <input
+          type="mobile"
+          placeholder="Mobile Number"
+          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none "
         />
         <input
           type="email"
           placeholder="Email"
-          className="p-3 rounded   border focus:outline-none "
+          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none "
         />
         <textarea
           placeholder="Message"
-          className="p-3 rounded   border focus:outline-none  h-32"
+          className="p-3 rounded   border border-[#7c7a7a] sm:border-[#D9D9D9] focus:outline-none  h-32"
         ></textarea>
         <button
           type="submit"
-          className="bg-black text-white py-2 rounded hover:scale-95 transition"
+          className="bg-black text-white py-2 rounded-lg hover:scale-95 transition"
         >
           Submit
         </button>
@@ -307,9 +321,9 @@ with Strength
     <a
       href="https://goo.gl/maps/your-location"
       target="_blank"
-      className="flex items-center gap-3 hover:text-black transition"
+      className="flex items-start sm:items-center  gap-3 hover:text-black transition"
     >
-      <MapPin className="w-6 h-6 text-black" /> 74/2, Palodia Tekra, Nr. Aarya Farm,
+      <MapPin className="w-8 h-8 text-black" /> 74/2, Palodia Tekra, Nr. Aarya Farm,
 Shilaj Road, Ahmedabad – 380059
     </a>
   </div>
