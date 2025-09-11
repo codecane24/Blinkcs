@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+
+# Host
+Host: https://blink-bricks.com
+
+# Sitemaps
+Sitemap: https://blink-bricks.com/sitemap.xml
