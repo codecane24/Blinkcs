@@ -6,6 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
+       "export": "next export",
     "lint": "eslint",
       "postbuild": "next-sitemap"
   },
