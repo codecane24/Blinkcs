@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MouseFollower from "@/components/MouseFollower";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
-
+import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -87,7 +87,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <MouseFollower />
+       
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+                 <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
   );
