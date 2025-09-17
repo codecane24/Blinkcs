@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import toast from "react-hot-toast";
 
 interface FormData {
+  title:string;
   name: string;
   company: string;
   mobile: string;
@@ -13,6 +14,7 @@ interface FormData {
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
+    title:" from blinkcs.com you got new massage",
     name: "",
     company: "",
     mobile: "",
@@ -40,7 +42,7 @@ export default function ContactForm() {
 
       if (res.ok) {
         toast.success("Message sent successfully!");
-        setFormData({ name: "", company: "", mobile: "", email: "", message: "" });
+        setFormData({  title: " from blinkcs.com you got new massage",name: "", company: "", mobile: "", email: "", message: "" });
       } else {
         toast.error(result.error || "Something went wrong!");
       }
