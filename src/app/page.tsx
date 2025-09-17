@@ -7,6 +7,8 @@ import Gallery from "@/components/Gallery";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Courier_Prime, Courgette } from "next/font/google";
 import { Inconsolata } from "next/font/google";
+import ContactForm from "@/components/ContactForm";
+
 // Fonts
 const courierPrime = Courier_Prime({ subsets: ["latin"], weight: "400" });
 const courgette = Courgette({ subsets: ["latin"], weight: "400" });
@@ -231,22 +233,8 @@ export default function HomePage() {
               </div>
 
               <div className="w-full md:w-1/2 bg-white sm:rounded-lg p-8 md:mr-2 lg:mr-9 sm:shadowss my-5">
-                <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
-                <form className="flex flex-col gap-4 bg-white px-5 py-4 rounded-xl">
-                  <label htmlFor="name" className="sr-only">Name</label>
-                  <input type="text" placeholder="Name" className="p-3 rounded border border-[#D9D9D9] focus:outline-none" />
-                  <label htmlFor="company" className="sr-only">Company</label>
-                  <input type="text" placeholder="Company" className="p-3 rounded border border-[#D9D9D9] focus:outline-none" />
-                  <label htmlFor="mobile" className="sr-only">Mobile Number</label>
-                  <input type="tel" placeholder="Mobile Number" className="p-3 rounded border border-[#D9D9D9] focus:outline-none" />
-                  <label htmlFor="email" className="sr-only">Email</label>
-                  <input type="email" placeholder="Email" className="p-3 rounded border border-[#D9D9D9] focus:outline-none" />
-                  <label htmlFor="massage" className="sr-only">Massage</label>
-                  <textarea placeholder="Message" className="p-3 rounded border border-[#D9D9D9] focus:outline-none h-32"></textarea>
-                  <button type="submit" className="bg-black text-white py-2 rounded-lg hover:scale-95 transition">
-                    Submit
-                  </button>
-                </form>
+      <h1 className="text-4xl xl:text-6xl text-[#EC1C24] font-semibold mb-6">Contact Us</h1>
+              <ContactForm />
 
                 <div className="mt-10">
                   <h3 className="text-2xl font-semibold mb-4">How to reach us</h3>
@@ -267,6 +255,7 @@ export default function HomePage() {
           </motion.section>
         </Reveal>
 
+{/* Footer section */}
        <div className="bg-black w-full h-12 pt-2 text-white font-light text-center text-sm flex flex-col md:flex-row items-center justify-center relative">
   
   <p className="mx-auto">© 2025 Blink Concrete Solutions</p>

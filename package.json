@@ -6,9 +6,9 @@
     "dev": "next dev --turbo  ",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-       "export": "next export",
+    "export": "next export",
     "lint": "eslint",
-      "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
@@ -19,6 +19,7 @@
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
     "next-sitemap": "^4.2.3",
+    "nodemailer": "^7.0.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "swiper": "^11.2.10"
