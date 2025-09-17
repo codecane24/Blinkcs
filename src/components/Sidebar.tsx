@@ -81,30 +81,54 @@ useEffect(() => {
           <nav className="flex flex-col items-center font-semibold">
 
             {/* Desktop links */}
-            <div className="hidden lg:flex flex-col items-center gap-16 xl:gap-20 text-[.7rem] xl:text-[1rem] tracking-wide">
-              {links.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setActiveSection(link.href)}
-                  className={`relative rotate-[-90deg] whitespace-nowrap font-semibold transition-all duration-300 ease-out group ${
-                    activeSection === link.href ? "text-[#404041]" : "text-red-600"
-                  }`}
-                >
-                  {link.name}
-                  <span
-                    className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 
-                      bg-red-600 transition-all duration-300 ease-out
-                      group-hover:w-full group-hover:-translate-x-1/2"
-                  ></span>
-                  <span
-                    className="absolute inset-0 -z-10 scale-x-0 origin-left bg-red-100 
-                      transition-transform duration-300 ease-out
-                      group-hover:scale-x-100"
-                  ></span>
-                </Link>
-              ))}
-            </div>
+<div className="hidden lg:flex flex-col items-center tracking-wide font-semibold text-[.7rem] xl:text-[.9rem]">
+
+  <Link
+    href="#home"
+    onClick={() => setActiveSection("#home")}
+    className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-14 xl:mb-16 ${
+      activeSection === "#home" ? "text-[#404041]" : "text-red-600"
+    }`}
+  >
+    HOME
+    <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-red-600 transition-all duration-300 ease-out group-hover:w-full group-hover:-translate-x-1/2"></span>
+  </Link>
+
+  <Link
+    href="#about"
+    onClick={() => setActiveSection("#about")}
+    className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-16 xl:mb-18 ${
+      activeSection === "#about" ? "text-[#404041]" : "text-red-600"
+    }`}
+  >
+    ABOUT US
+    <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-red-600 transition-all duration-300 ease-out group-hover:w-full group-hover:-translate-x-1/2"></span>
+  </Link>
+
+  <Link
+    href="#gallery"
+    onClick={() => setActiveSection("#gallery")}
+    className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-[88%] ${
+      activeSection === "#gallery" ? "text-[#404041]" : "text-red-600"
+    }`}
+  >
+    GALLERY
+    <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-red-600 transition-all duration-300 ease-out group-hover:w-full group-hover:-translate-x-1/2"></span>
+  </Link>
+
+  <Link
+    href="#contact"
+    onClick={() => setActiveSection("#contact")}
+    className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-[10%] ${
+      activeSection === "#contact" ? "text-[#404041]" : "text-red-600"
+    }`}
+  >
+    CONTACT US
+    <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-red-600 transition-all duration-300 ease-out group-hover:w-full group-hover:-translate-x-1/2"></span>
+  </Link>
+
+</div>
+
 
             {/* Mobile/Tablet links */}
             <div className="flex flex-col gap-6 text-base lg:hidden">

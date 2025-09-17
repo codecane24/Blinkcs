@@ -6,10 +6,14 @@ import Reveal from "@/components/Reveal";
 import Gallery from "@/components/Gallery";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Courier_Prime, Courgette } from "next/font/google";
-
+import { Inconsolata } from "next/font/google";
 // Fonts
 const courierPrime = Courier_Prime({ subsets: ["latin"], weight: "400" });
 const courgette = Courgette({ subsets: ["latin"], weight: "400" });
+const inconsolata = Inconsolata({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 // Image Data
 const imagesData = [
@@ -263,9 +267,19 @@ export default function HomePage() {
           </motion.section>
         </Reveal>
 
-        <div className="bg-black w-full h-12 pt-2">
-          <p className="text-white font-light text-center text-sm">Copyright © 2025 Blink Concrete Solutions</p>
-        </div>
+       <div className="bg-black w-full h-12 pt-2 text-white font-light text-center text-sm flex flex-col md:flex-row items-center justify-center relative">
+  
+  <p className="mx-auto">© 2025 Blink Concrete Solutions</p>
+  
+  <span className="text-[0.7rem] mt-1 md:mt-0 md:absolute md:right-5">
+    - developed by{' '}
+    <span className={`${inconsolata.className} antialiased text-sm`}>
+      Tech Tycoons
+    </span>
+  </span>
+
+</div>
+
       </div>
     </div>
   );
