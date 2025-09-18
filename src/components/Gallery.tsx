@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,6 +34,12 @@ export default function Gallery({
   currentPage,
   totalPages,
 }: GalleryProps) {
+  const [mounted, setMounted] = useState(false);
+
+useEffect(() => setMounted(true), []);
+
+if (!mounted) return null; // skip animations on server
+
   return (
     <div className="w-full p-4" id="gallery">
       {/* Top bar */}

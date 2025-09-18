@@ -81,6 +81,11 @@ export default function HomePage() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
 
   return (
     <div className="flex overflow-x-hidden">
@@ -200,16 +205,19 @@ export default function HomePage() {
         {/* Gallery Section */}
         <Reveal y={90} delay={0.3}>
           <div id="gallery" className="mb-11 sm:mb-12 lg:mb-20">
-            <Gallery
-              visibleImages={visibleImages}
-              category={category}
-              setCategory={setCategory}
-              setCurrentPage={setCurrentPage}
-              handlePrev={handlePrev}
-              handleNext={handleNext}
-              currentPage={currentPage}
-              totalPages={totalPages}
-            />
+        {mounted && (
+  <Gallery
+    visibleImages={visibleImages}
+    category={category}
+    setCategory={setCategory}
+    setCurrentPage={setCurrentPage}
+    handlePrev={handlePrev}
+    handleNext={handleNext}
+    currentPage={currentPage}
+    totalPages={totalPages}
+  />
+)}
+
           </div>
         </Reveal>
 
