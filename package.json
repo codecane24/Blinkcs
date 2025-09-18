@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo  ",
+    "dev": "next dev ",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "export": "next export",
@@ -29,6 +29,7 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
