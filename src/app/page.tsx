@@ -230,7 +230,7 @@ useEffect(() => {
             <div className="flex flex-col md:flex-row items-start justify-center bg-[#f4f3f3] w-full sm:px-5 md:px-0 gap-4 lg:gap-10 xl:gap-10">
               <div className="w-[80%] sm:w-1/2 mx-auto rounded-lg overflow-hidden md:mt-5 md:ml-5 lg:mt-5 lg:ml-9">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117470.76714368863!2d72.385109!3d23.061874000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9f6d1bb128c5%3A0xaf09f75451dfac6f!2sGodhavi%2C%20Gujarat%20382115!5e0!3m2!1sen!2sin!4v1757494236106!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d7342.341457573228!2d72.44196470824173!3d23.05420155909277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDAzJzE1LjAiTiA3MsKwMjYnNDQuOSJF!5e0!3m2!1sen!2sin!4v1758265381897!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   className="min-h-[500px] md:min-h-[700px] border-0"
