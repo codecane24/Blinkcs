@@ -19,16 +19,16 @@ const inconsolata = Inconsolata({
 
 // Image Data
 const imagesData = [
-  { id: 1, src: "/brick1.webp", category: "Interior", alt: "Interior custom concrete brick 1" },
-  { id: 2, src: "/brick2.webp", category: "Exterior", alt: "Exterior custom concrete brick 2" },
-  { id: 3, src: "/brick3.webp", category: "Interior", alt: "Interior custom concrete brick 3" },
-  { id: 4, src: "/brick4.png", category: "Exterior", alt: "Exterior custom concrete brick 4" },
-  { id: 5, src: "/brick5.webp", category: "Interior", alt: "Interior custom concrete brick 5" },
-  { id: 6, src: "/brick6.webp", category: "Exterior", alt: "Exterior custom concrete brick 6" },
-  { id: 7, src: "/brick7.webp", category: "Interior", alt: "Interior custom concrete brick 7" },
-  { id: 8, src: "/brick8.webp", category: "Exterior", alt: "Exterior custom concrete brick 8" },
-  { id: 9, src: "/brick1.webp", category: "Interior", alt: "Interior custom concrete brick 9" },
-  { id: 10, src: "/brick5.webp", category: "Exterior", alt: "Exterior custom concrete brick 10" },
+  { id: 1, src: "/brick1.webp", category: "Interior", alt: "Interior custom concrete brick 1", description:"here it is the customised brick for decroting your properties"},
+  { id: 2, src: "/brick2.webp", category: "Exterior", alt: "Exterior custom concrete brick 2",description:"here it is the customised brick for decroting your properties" },
+  { id: 3, src: "/brick3.webp", category: "Interior", alt: "Interior custom concrete brick 3",description:"here it is the customised brick for decroting your properties" },
+  { id: 4, src: "/brick4.png", category: "Exterior", alt: "Exterior custom concrete brick 4",description:"here it is the customised brick for decroting your properties" },
+  { id: 5, src: "/brick5.webp", category: "Interior", alt: "Interior custom concrete brick 5",description:"here it is the customised brick for decroting your properties" },
+  { id: 6, src: "/brick6.webp", category: "Exterior", alt: "Exterior custom concrete brick 6",description:"here it is the customised brick for decroting your properties" },
+  { id: 7, src: "/brick7.webp", category: "Interior", alt: "Interior custom concrete brick 7",description:"here it is the customised brick for decroting your properties" },
+  { id: 8, src: "/brick8.webp", category: "Exterior", alt: "Exterior custom concrete brick 8",description:"here it is the customised brick for decroting your properties" },
+  { id: 9, src: "/brick1.webp", category: "Interior", alt: "Interior custom concrete brick 9",description:"here it is the customised brick for decroting your properties" },
+  { id: 10, src: "/brick5.webp", category: "Exterior", alt: "Exterior custom concrete brick 10",description:"here it is the customised brick for decroting your properties" },
 ];
 
 // Background Images
@@ -276,7 +276,6 @@ useEffect(() => {
   </span>
 
 </div>
-
       </div>
     </div>
   );
