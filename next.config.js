@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // add your other config here
+ images: {
+    domains: ["effortless-ducks-f3d115d1e3.media.strapiapp.com"],
+  },
 };
 
 module.exports = nextConfig;

@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/Sidebar";
@@ -12,24 +12,26 @@ import ContactForm from "@/components/ContactForm";
 // Fonts
 const courierPrime = Courier_Prime({ subsets: ["latin"], weight: "400" });
 const courgette = Courgette({ subsets: ["latin"], weight: "400" });
-const inconsolata = Inconsolata({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["400", "700"] });
 
-// Image Data
-const imagesData = [
-  { id: 1, src: "/brick1.webp", category: "Interior", alt: "Interior custom concrete brick 1", description:"here it is the customised brick for decroting your properties"},
-  { id: 2, src: "/brick2.webp", category: "Exterior", alt: "Exterior custom concrete brick 2",description:"here it is the customised brick for decroting your properties" },
-  { id: 3, src: "/brick3.webp", category: "Interior", alt: "Interior custom concrete brick 3",description:"here it is the customised brick for decroting your properties" },
-  { id: 4, src: "/brick4.png", category: "Exterior", alt: "Exterior custom concrete brick 4",description:"here it is the customised brick for decroting your properties" },
-  { id: 5, src: "/brick5.webp", category: "Interior", alt: "Interior custom concrete brick 5",description:"here it is the customised brick for decroting your properties" },
-  { id: 6, src: "/brick6.webp", category: "Exterior", alt: "Exterior custom concrete brick 6",description:"here it is the customised brick for decroting your properties" },
-  { id: 7, src: "/brick7.webp", category: "Interior", alt: "Interior custom concrete brick 7",description:"here it is the customised brick for decroting your properties" },
-  { id: 8, src: "/brick8.webp", category: "Exterior", alt: "Exterior custom concrete brick 8",description:"here it is the customised brick for decroting your properties" },
-  { id: 9, src: "/brick1.webp", category: "Interior", alt: "Interior custom concrete brick 9",description:"here it is the customised brick for decroting your properties" },
-  { id: 10, src: "/brick5.webp", category: "Exterior", alt: "Exterior custom concrete brick 10",description:"here it is the customised brick for decroting your properties" },
-];
+ export type ImageItem = {
+  id: number;
+  src: string;
+  description: string;
+  category: string;
+};
+type GroupedImages = {
+  [category: string]: ImageItem[];
+};
+// Define the type for a Strapi carousel item
+interface StrapiCarouselItem {
+  id: number;
+  description?: string;
+  imge?: { url: string }[];
+  carousel_item?: {
+    name?: string;
+  };
+}
 
 // Background Images
 const backgroundImages = [
@@ -45,7 +47,9 @@ export default function HomePage() {
   const [category, setCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [allImages, setAllImages] = useState<ImageItem[]>([]);
+  const [mounted, setMounted] = useState(false);
+const [loading, setLoading] = useState(true);
   // Background slider
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,15 +58,63 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+
+// Fetch images from Strapi
+useEffect(() => {
+  async function fetchImages() {
+    try {
+      const res = await fetch(
+        "https://effortless-ducks-f3d115d1e3.strapiapp.com/api/carousel-items?populate=*"
+      );
+      const data = await res.json();
+
+   
+
+      const images = data.data
+        .map((item: StrapiCarouselItem | { id: number; attributes: StrapiCarouselItem }) => {
+          // Handle the case if Strapi returns nested attributes
+          const attr = 'attributes' in item ? item.attributes : item;
+
+          if (!attr.imge || attr.imge.length === 0) return null;
+
+          return {
+            id: item.id,
+            src: attr.imge[0].url || "", 
+            description: attr.description || "",
+            category: attr.carousel_item?.name || "Uncategorized",
+          };
+        })
+        .filter(Boolean);
+
+      setAllImages(images as ImageItem[]); // cast to your existing ImageItem type
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch images:", error);
+    }
+  }
+
+  fetchImages();
+}, []);
+
+
+
+const filteredImages = 
+  category === "All"
+    ? allImages
+    : allImages.filter(img => img.category === category);
+
+
+  // Mark mounted for client-side animations
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Filtered and paginated images (memoized)
   const imagesPerPage = 8;
-  const filteredImages = useMemo(() => {
-    return category === "All"
-      ? imagesData
-      : imagesData.filter((img) => img.category === category);
-  }, [category]);
+
 
   const totalPages = Math.ceil(filteredImages.length / imagesPerPage);
+
   const visibleImages = useMemo(() => {
     const startIndex = currentPage * imagesPerPage;
     return filteredImages.slice(startIndex, startIndex + imagesPerPage);
@@ -81,7 +133,7 @@ export default function HomePage() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
-const [mounted, setMounted] = useState(false);
+
 
 useEffect(() => {
   setMounted(true);
@@ -207,7 +259,8 @@ useEffect(() => {
           <div id="gallery" className="mb-11 sm:mb-12 lg:mb-20">
         {mounted && (
   <Gallery
-    visibleImages={visibleImages}
+  allImages={allImages}      // full list, for generating categories
+  visibleImages={filteredImages} 
     category={category}
     setCategory={setCategory}
     setCurrentPage={setCurrentPage}
@@ -215,6 +268,7 @@ useEffect(() => {
     handleNext={handleNext}
     currentPage={currentPage}
     totalPages={totalPages}
+      loading={loading}  // ✅ pass loading
   />
 )}
 
