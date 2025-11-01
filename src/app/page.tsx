@@ -8,6 +8,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { Courier_Prime, Courgette } from "next/font/google";
 import { Inconsolata } from "next/font/google";
 import ContactForm from "@/components/ContactForm";
+import Link from "next/link";
 
 // Fonts
 const courierPrime = Courier_Prime({ subsets: ["latin"], weight: "400" });
@@ -253,6 +254,68 @@ useEffect(() => {
             </div>
           </Reveal>
         </motion.section>
+{/* Our Products Section */}
+<motion.section
+  id="products"
+  className="relative w-full py-24 sm:py-32 bg-[#1e1e1e] text-white overflow-hidden flex items-center justify-center"
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+  viewport={{ once: true }}
+>
+  {/* Background layers */}
+  <div
+    className="absolute inset-0 bg-cover bg-center opacity-25 scale-105"
+    style={{ backgroundImage: "url('/products-bg.webp')" }} // replace with your texture / background
+  ></div>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80"></div>
+
+  {/* Content */}
+  <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
+    <motion.h2
+      className="text-4xl md:text-6xl font-bold mb-4 tracking-wide"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      viewport={{ once: true }}
+    >
+      Our <span className="text-[#EC1C24]">Products</span>
+    </motion.h2>
+
+    <motion.div
+      className="h-[2px] bg-[#EC1C24] w-28 mx-auto mb-8"
+      initial={{ width: 0 }}
+      whileInView={{ width: 112 }}
+      transition={{ duration: 1.2, ease: 'easeInOut' }}
+      viewport={{ once: true }}
+    ></motion.div>
+
+    <motion.p
+      className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.2 }}
+      viewport={{ once: true }}
+    >
+      Explore our range of innovative concrete solutions — engineered for
+      <span className="text-white font-semibold"> strength, design,</span> and
+      <span className="text-white font-semibold"> sustainability.</span>  
+      Every product reflects our commitment to quality and excellence.
+    </motion.p>
+
+      <Link href={'/products'}> <motion.button
+   
+      className="bg-[#EC1C24] hover:bg-[#c8181f] text-white px-10 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-[#ec1c24]/40 transition-all duration-300 hover:scale-105"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+    >
+  View All Products
+    </motion.button></Link> 
+  </div>
+
+  {/* Decorative glowing circle behind content */}
+  <div className="absolute w-[400px] h-[400px] bg-[#EC1C24]/10 rounded-full blur-3xl -z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+</motion.section>
 
         {/* Gallery Section */}
         <Reveal y={90} delay={0.3}>
