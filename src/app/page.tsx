@@ -142,7 +142,7 @@ useEffect(() => {
 
   return (
     <div className="flex overflow-x-hidden">
-      <Sidebar />
+  
       <div className="lg:ml-16 flex-1 bg-[#F5F5F5]">
         {/* Hero Section */}
         <motion.section
@@ -318,7 +318,7 @@ useEffect(() => {
 </motion.section>
 
         {/* Gallery Section */}
-        <Reveal y={90} delay={0.3}>
+       {/*    <Reveal y={90} delay={0.3}>
           <div id="gallery" className="mb-11 sm:mb-12 lg:mb-20">
         {mounted && (
   <Gallery
@@ -336,7 +336,7 @@ useEffect(() => {
 )}
 
           </div>
-        </Reveal>
+        </Reveal>  */}
 
         {/* Contact Section */}
         <Reveal y={50} delay={0.4}>
@@ -380,19 +380,7 @@ useEffect(() => {
           </motion.section>
         </Reveal>
 
-{/* Footer section */}
-       <div className="bg-black w-full h-12 pt-2 text-white font-light text-center text-sm flex flex-col md:flex-row items-center justify-center relative">
-  
-  <p className="mx-auto">© 2025 Blink Concrete Solutions</p>
-  
-  <span className="text-[0.7rem] mt-1 md:mt-0 md:absolute md:right-5">
-    - developed by{' '}
-    <span className={`${inconsolata.className} antialiased text-sm`}>
-      Tech Tycoons
-    </span>
-  </span>
 
-</div>
       </div>
     </div>
   );

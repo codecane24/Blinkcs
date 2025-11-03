@@ -39,10 +39,10 @@ useEffect(() => {
 
 
   const links = [
-    { name: "HOME", href: "#home" },
-    { name: "ABOUT US", href: "#about" },
-    { name: "GALLERY", href: "#gallery" },
-    { name: "CONTACT US", href: "#contact" },
+    { name: "HOME", href: "/#home" },
+    { name: "ABOUT US", href: "/#about" },
+    { name: "OUR PRODUCTS", href: "/#products" },
+    { name: "CONTACT US", href: "/#contact" },
   ];
 
   return (
@@ -70,13 +70,13 @@ useEffect(() => {
           lg:translate-x-0 lg:w-16`}
       >
         <div className="flex flex-col items-center">
-          <Image
+          <Link href={'/'}><Image
             src="/blink-logo-2.webp"
             alt="Logo"
             width={30}
             height={30}
             className="mb-6 xl:mb-10"
-          />
+          /></Link>
 
           <nav className="flex flex-col items-center font-semibold">
 
@@ -84,7 +84,7 @@ useEffect(() => {
 <div className="hidden lg:flex flex-col items-center tracking-wide font-semibold text-[.7rem] xl:text-[.9rem]">
 
   <Link
-    href="#home"
+    href="/#home"
     onClick={() => setActiveSection("#home")}
     className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-14 xl:mb-16 ${
       activeSection === "#home" ? "text-[#404041]" : "text-red-600"
@@ -95,7 +95,7 @@ useEffect(() => {
   </Link>
 
   <Link
-    href="#about"
+    href="/#about"
     onClick={() => setActiveSection("#about")}
     className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-16 xl:mb-18 ${
       activeSection === "#about" ? "text-[#404041]" : "text-red-600"
@@ -106,18 +106,18 @@ useEffect(() => {
   </Link>
 
   <Link
-    href="#gallery"
-    onClick={() => setActiveSection("#gallery")}
+    href="/#products"
+    onClick={() => setActiveSection("#products")}
     className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-[88%] ${
-      activeSection === "#gallery" ? "text-[#404041]" : "text-red-600"
+      activeSection === "#products" ? "text-[#404041]" : "text-red-600"
     }`}
   >
-    GALLERY
+ PRODUCTS
     <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-red-600 transition-all duration-300 ease-out group-hover:w-full group-hover:-translate-x-1/2"></span>
   </Link>
 
   <Link
-    href="#contact"
+    href="/#contact"
     onClick={() => setActiveSection("#contact")}
     className={`relative rotate-[-90deg] whitespace-nowrap transition-all duration-300 ease-out group  mb-[10%] ${
       activeSection === "#contact" ? "text-[#404041]" : "text-red-600"
