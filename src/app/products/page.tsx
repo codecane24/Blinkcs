@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-// ✅ Define a proper Product type
 type Product = {
   id: number;
   name?: string;
@@ -13,7 +12,6 @@ type Product = {
   carousel_item?: { name?: string };
 };
 
-// ✅ Skeleton component for shimmer effect
 const SkeletonCard = () => (
   <div className="animate-pulse bg-white shadow-md rounded-xl overflow-hidden">
     <div className="w-full h-56 bg-gray-200"></div>
@@ -30,7 +28,11 @@ const ProductsPage: React.FC = () => {
   const [filtered, setFiltered] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [loading, setLoading] = useState<boolean>(true); // ✅ loader state
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Modal state
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string>("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -58,7 +60,7 @@ const ProductsPage: React.FC = () => {
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
-        setLoading(false); // ✅ stop loader
+        setLoading(false);
       }
     };
 
@@ -78,14 +80,22 @@ const ProductsPage: React.FC = () => {
     }
   };
 
+  const openPopup = (url: string) => {
+    setSelectedImage(url);
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+    setSelectedImage("");
+  };
+
   return (
     <div className="w-full md:w-[90%] mx-auto px-6 py-10">
-      {/* Heading */}
       <h1 className="text-3xl lg:text-4xl text-black font-semibold text-center mb-8">
         Our Products
       </h1>
 
-      {/* Filter Buttons */}
       <div className="flex overflow-x-scroll sm:overflow-auto items-center justify-center gap-4 mb-10">
         {categories.map((cat) => (
           <button
@@ -102,7 +112,6 @@ const ProductsPage: React.FC = () => {
         ))}
       </div>
 
-      {/* ✅ Skeleton Loader or Products */}
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -114,7 +123,8 @@ const ProductsPage: React.FC = () => {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+              onClick={() => item.imge?.[0]?.url && openPopup(item.imge[0].url)}
             >
               {item.imge?.[0]?.url ? (
                 <Image
@@ -148,6 +158,36 @@ const ProductsPage: React.FC = () => {
       ) : (
         <p className="text-center text-gray-500 mt-10">No products found.</p>
       )}
+
+ {/* Simple Popup */}
+{popupOpen && (
+  <div
+    className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm bg-black/50"
+    onClick={closePopup}
+  >
+    <div
+      className="relative max-w-3xl w-full p-4"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Bigger X button */}
+      <button
+        className="absolute top-2 right-2 text-white text-4xl font-bold hover:text-gray-300 transition"
+        onClick={closePopup}
+      >
+        ×
+      </button>
+      <div className="relative w-full h-[500px] md:h-[600px]">
+        <Image
+          src={selectedImage}
+          alt="Product"
+          fill
+          style={{ objectFit: "contain" }}
+        />
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
